@@ -1,0 +1,139 @@
+/* Customize the default color (both font color and background color) and font. (20 points) */
+html {
+  background-color: #011c31;
+  font-family: "Times New Roman", Times, serif;
+}    
+
+/* main title */
+h1.name-title {
+  text-align: center;
+  font-size: 2em;
+  font-weight: bold;
+  color: #d9d9d9;
+  padding: 0.5em;
+  font-weight: bold;
+  margin: 0.5em;
+}
+
+/* center container - about me title, short bio */
+.centered-container {
+  margin: auto;
+  width: 600px;
+  text-align: center;
+}
+
+.div-abt-me {
+  margin-left: 15%;
+  border: 3px solid #d9d9d9;
+  padding: 20px;
+  width: 425px;
+  height: 175px;   
+  background:#ffd801;  
+}
+
+.title-abt-me {
+  margin-left: 15%;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #d9d9d9;
+  padding: 0.4em;
+  margin: 0.4em;
+}
+
+.para-abt-me {
+  text-align:center; 
+  vertical-align: middle;
+  display: table-cell;
+  font-size: 1.2em;
+  color: #e80521;
+}
+
+/* bottom left container - list of contents to include on the website later */
+.bottom-left-container {
+  margin: auto;
+  width: 600px;
+  text-align: center;
+}
+
+.title-contents {
+  margin-left: 15%;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #d9d9d9;
+  padding: 0.4em;
+  margin: 0.4em;
+}
+
+.div-contents {
+  margin-left: 15%;
+  border: 3px solid #d9d9d9;
+  padding: 10px;
+  width: 450px;
+  height: 150px;   
+  background:#ffd801;
+}
+
+.bullet-list-contents {
+  text-align: left; 
+  vertical-align: middle;
+  display: table-cell;
+  font-size: 1.2em;
+  color: #e80521;
+}
+
+/* Button and function output styling */
+
+/* switching around images */
+.northeastern-logo {
+  float: right;
+  margin-right: 15%;
+  margin-top: -25%;
+  width: 150px;
+  height: 150px;
+}
+
+.picture-stockholm {
+  float: left;
+  margin-left: 5%;
+  margin-top: -25%;
+  width: 150px;
+  height: 150px;
+}
+
+.button-container {
+    float: left;
+    margin-left: 5%;
+    margin-top: -27.66%;
+    width: 150px;
+    height: 150px;
+}
+
+/* message button styling and fuctionality */
+.hidden{
+  display : none;
+  }
+
+.messageText {
+  color: #e80521;
+}
+
+.messageButton-container {
+  padding: 20px;
+  text-align: center;
+  position:relative;
+}
+
+.messageButton{
+  position: absolute; 
+  left: 50%;
+}
+
+.hidden {
+  text-align: center;
+  position:relative;
+}
+
+.messageText {
+  position: absolute; 
+  left: 8%;
+}
