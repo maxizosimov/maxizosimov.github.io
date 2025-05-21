@@ -24,21 +24,21 @@ export const SKILLS: Skill[] = [
 // Projects
 export const PROJECTS: Project[] = [
   {
-    title: "AI Text Generator",
-    description: "A natural language processing application that generates human-like text based on input prompts.",
-    tags: ["AI", "NLP", "React", "Python"],
-    image: "https://images.pexels.com/photos/7567444/pexels-photo-7567444.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    title: "Large Language Model from Scratch",
+    description: "Building a llm from scratch, implementing both a custom BPE tokenizer and a decoder-only transformer architecture with all core components (embeddings, self-attention, FFN, and normalization layers). All done on personal Nvidia GPU. (In Progress)",
+    tags: ["LLM", "Transformers", "PyTorch", "NLP"],
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5-sPAKLO8SKgyIVF94GOE_cplfwY_Q9vP0g&s",
   },
   {
-    title: "Sentiment Analysis Dashboard",
-    description: "Real-time sentiment analysis dashboard for monitoring social media conversations.",
-    tags: ["Machine Learning", "Data Visualization", "React", "TensorFlow"],
-    image: "https://images.pexels.com/photos/669615/pexels-photo-669615.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    title: "Neural Weather Predictor",
+    description: "Tired of Boston's unpredictable weather. Presenting, a deep learning system that predicts localized weather patterns over time, visualizing the evolution of atmospheric conditions in an interactive dashboard. (In Progress)",
+    tags: ["Neural Networks", "Geospatial Data", "TimeSeries", "Visualization"],
+    image: "https://cdn.britannica.com/45/231245-050-D7E2EA32/weather-map-meteorology.jpg",
   },
   {
-    title: "Chatbot Framework",
-    description: "An extensible framework for building customizable AI chatbots for various domains.",
-    tags: ["NLP", "API Design", "JavaScript", "Python"],
+    title: "Protein Structure Prediction Visualization Platform",
+    description: "Predicting protein folding patterns and creating interactive 3D visualizations of the results. (In Progress)",
+    tags: ["Bioinformatics", "3D Visualization", "Molecular", "React"],
     image: "https://images.pexels.com/photos/8386434/pexels-photo-8386434.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
   },
 ];
