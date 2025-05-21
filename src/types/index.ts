@@ -5,9 +5,16 @@ export interface NavItem {
     href: string;
   }
   
+  export enum SkillCategory {
+    EXPERT = 'Expert',
+    ADVANCED = 'Advanced',
+    INTERMEDIATE = 'Intermediate',
+    PROFICIENT = 'Proficient'
+  }
+  
   export interface Skill {
     name: string;
-    level: number; // 0-100
+    category: SkillCategory;
     icon?: string;
   }
   
