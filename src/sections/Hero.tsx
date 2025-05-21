@@ -19,14 +19,14 @@ const Hero: React.FC = () => {
   }, [phrases.length]);
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center pt-16">
+    <section id="home" className="relative min-h-screen flex flex-col justify-between items-center pt-16 pb-20">
       {/* Gradient Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-purple-900/30 to-slate-900 z-0" />
       
       {/* Radial gradient overlay */}
       <div className="absolute inset-0 opacity-40 dark:opacity-60 bg-[radial-gradient(circle_at_center,rgba(120,119,198,0.3),rgba(255,255,255,0)_70%)]" />
       
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
+      <div className="container mx-auto px-4 md:px-6 relative z-10 flex-grow flex flex-col justify-center">
         <div className="max-w-4xl">
           <p className="text-lg md:text-xl font-medium text-teal-400 mb-4 animate-fadeIn">
             Hello, I'm
@@ -65,13 +65,13 @@ const Hero: React.FC = () => {
             </a>
           </div>
         </div>
-        
-        {/* Scroll Down Indicator */}
-        <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 flex flex-col items-center">
-          <span className="text-gray-400 text-sm mb-2">Scroll Down</span>
-          <div className="w-6 h-10 rounded-full border-2 border-gray-400 flex justify-center p-1">
-            <div className="w-1 h-2 bg-gray-400 rounded-full animate-scrollDown" />
-          </div>
+      </div>
+      
+      {/* Scroll Down Indicator */}
+      <div className="relative z-10 flex flex-col items-center mt-8">
+        <span className="text-gray-400 text-sm mb-2">Scroll Down</span>
+        <div className="w-6 h-10 rounded-full border-2 border-gray-400 flex justify-center p-1">
+          <div className="w-1 h-2 bg-gray-400 rounded-full animate-scrollDown" />
         </div>
       </div>
     </section>
