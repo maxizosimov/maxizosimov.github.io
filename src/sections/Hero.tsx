@@ -4,9 +4,9 @@ import TypingEffect from '../components/TypingEffect';
 const Hero: React.FC = () => {
   const [activePhrase, setActivePhrase] = useState(0);
   const phrases = [
-    "AI Developer",
+    "LLM Developer",
     "Machine Learning Engineer",
-    "NLP Specialist",
+    "AI Enthusiast",
     "Problem Solver"
   ];
 
@@ -34,7 +34,7 @@ const Hero: React.FC = () => {
           
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6">
             <span className="block mb-2">Maxim Izosimov</span>
-            <span className="h-16 md:h-20 block">
+            <span className="h-16 md:h-20 block min-w-[300px] md:min-w-[400px] lg:min-w-[500px]">
               <TypingEffect
                 text={phrases[activePhrase]}
                 className="bg-clip-text text-transparent bg-gradient-to-r from-teal-400 via-blue-500 to-purple-600"
@@ -45,7 +45,7 @@ const Hero: React.FC = () => {
           </h1>
           
           <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl">
-            Building intelligent systems to solve complex problems. Passionate about AI, 
+            Building intelligent systems to solve complex problems. Passionate about LLMs, 
             machine learning, and creating technology that enhances human capabilities.
           </p>
           
@@ -67,7 +67,7 @@ const Hero: React.FC = () => {
         </div>
         
         {/* Scroll Down Indicator */}
-        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center">
+        <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 flex flex-col items-center">
           <span className="text-gray-400 text-sm mb-2">Scroll Down</span>
           <div className="w-6 h-10 rounded-full border-2 border-gray-400 flex justify-center p-1">
             <div className="w-1 h-2 bg-gray-400 rounded-full animate-scrollDown" />

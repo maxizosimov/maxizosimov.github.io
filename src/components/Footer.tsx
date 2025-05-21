@@ -14,7 +14,7 @@ const Footer: React.FC = () => {
             href="#home" 
             className="text-2xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-teal-400 via-purple-500 to-blue-500 mb-6"
           >
-            AI.Portfolio
+            Maxim's Portfolio
           </a>
           
           {/* Social Links */}

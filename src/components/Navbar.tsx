@@ -31,7 +31,7 @@ const Navbar: React.FC = () => {
             href="#home" 
             className="text-2xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-teal-400 via-purple-500 to-blue-500"
           >
-            AI.Portfolio
+            Maxim's Portfolio
           </a>
           
           <div className="hidden md:flex items-center space-x-8">

@@ -19,63 +19,75 @@ const TypingEffect: React.FC<TypingEffectProps> = ({
   const [showCursor, setShowCursor] = useState(true);
   const [isTyping, setIsTyping] = useState(false);
   const textIndex = useRef(0);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const containerRef = useRef<HTMLSpanElement>(null);
 
+  // Reset and start typing when text changes
   useEffect(() => {
-    // Reset when text changes
-    textIndex.current = 0;
-    setDisplayedText('');
-    setIsTyping(false);
-    
+    // Clear any existing timeouts
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
     }
-    
-    // Delay before starting to type
+
+    // Reset state
+    textIndex.current = 0;
+    setDisplayedText('');
+    setIsTyping(false);
+
+    // Start typing after delay
     timeoutRef.current = setTimeout(() => {
       setIsTyping(true);
     }, delayBeforeStart);
-    
+
     return () => {
       if (timeoutRef.current) {
         clearTimeout(timeoutRef.current);
       }
     };
   }, [text, delayBeforeStart]);
-  
-  // Typing effect
+
+  // Handle typing animation
   useEffect(() => {
-    if (!isTyping) return;
-    
-    if (textIndex.current < text.length) {
-      const timeout = setTimeout(() => {
-        setDisplayedText(prev => prev + text[textIndex.current]);
+    if (!isTyping || !text) return;
+
+    const typeNextChar = () => {
+      if (textIndex.current < text.length) {
+        setDisplayedText(text.substring(0, textIndex.current + 1));
         textIndex.current++;
-      }, typingSpeed);
-      
-      return () => clearTimeout(timeout);
-    } else {
-      setIsTyping(false);
-    }
-  }, [text, displayedText, typingSpeed, isTyping]);
-  
+        timeoutRef.current = setTimeout(typeNextChar, typingSpeed);
+      } else {
+        setIsTyping(false);
+      }
+    };
+
+    typeNextChar();
+
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, [isTyping, text, typingSpeed]);
+
   // Cursor blinking effect
   useEffect(() => {
     const interval = setInterval(() => {
       setShowCursor(prev => !prev);
     }, cursorBlinkSpeed);
-    
+
     return () => clearInterval(interval);
   }, [cursorBlinkSpeed]);
 
   return (
-    <span className={className}>
-      {displayedText}
-      <span 
-        className={`inline-block w-2 h-5 ml-1 bg-teal-400 ${
-          showCursor ? 'opacity-100' : 'opacity-0'
-        } transition-opacity duration-100`}
-      />
+    <span className={`inline-block ${className}`} ref={containerRef}>
+      <span className="inline-block whitespace-nowrap">
+        {displayedText}
+        <span 
+          className={`inline-block w-2 h-5 ml-1 bg-teal-400 ${
+            showCursor ? 'opacity-100' : 'opacity-0'
+          } transition-opacity duration-100`}
+        />
+      </span>
     </span>
   );
 };
