@@ -25,7 +25,7 @@ const About: React.FC = () => {
             
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
               <div className="bg-white dark:bg-slate-800 p-4 rounded-lg shadow-md text-center">
-                <span className="block text-3xl font-bold text-teal-500">3+</span>
+                <span className="block text-3xl font-bold text-teal-500">2</span>
                 <span className="text-gray-600 dark:text-gray-400 text-sm">Years Experience</span>
               </div>
               
@@ -35,12 +35,12 @@ const About: React.FC = () => {
               </div>
               
               <div className="bg-white dark:bg-slate-800 p-4 rounded-lg shadow-md text-center">
-                <span className="block text-3xl font-bold text-purple-500">10+</span>
-                <span className="text-gray-600 dark:text-gray-400 text-sm">AI Models</span>
+                <span className="block text-3xl font-bold text-purple-500">1</span>
+                <span className="text-gray-600 dark:text-gray-400 text-sm">Benchmarking Paper</span>
               </div>
               
               <div className="bg-white dark:bg-slate-800 p-4 rounded-lg shadow-md text-center">
-                <span className="block text-3xl font-bold text-pink-500">5+</span>
+                <span className="block text-3xl font-bold text-pink-500">3+</span>
                 <span className="text-gray-600 dark:text-gray-400 text-sm">Languages</span>
               </div>
             </div>
