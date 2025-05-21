@@ -14,10 +14,10 @@ export const SKILLS: Skill[] = [
   { name: "Python", category: SkillCategory.EXPERT },
   { name: "Model Benchmarking", category: SkillCategory.EXPERT },
   { name: "LLM Evaluation", category: SkillCategory.ADVANCED },
-  { name: "LLM Fine-Tuning", category: SkillCategory.ADVANCED },
   { name: "Statistical Analysis", category: SkillCategory.ADVANCED },
   { name: "Deep Learning", category: SkillCategory.ADVANCED },
-  { name: "RAG Systems", category: SkillCategory.PROFICIENT },
+  { name: "LLM Fine-Tuning", category: SkillCategory.INTERMEDIATE },
+  { name: "RAG Systems", category: SkillCategory.INTERMEDIATE },
   { name: "AWS/Azure Cloud", category: SkillCategory.PROFICIENT },
 ];
 
