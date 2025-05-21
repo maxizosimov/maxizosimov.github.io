@@ -28,7 +28,6 @@ const Projects: React.FC = () => {
           ))}
         </div>
         
-        {/* Call to action */}
         <div className="text-center mt-16">
           <p className="text-gray-600 dark:text-gray-400 mb-6">
             Interested in seeing more of my work or discussing a potential project?
