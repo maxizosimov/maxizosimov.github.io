@@ -1,0 +1,404 @@
+---
+import Base from '../layouts/Base.astro';
+import ThemeToggle from '../components/ThemeToggle.astro';
+import { site, links, about, experience, projects, skills } from '../data/site';
+
+const nav = [
+  { label: 'About', href: '#about' },
+  { label: 'Work', href: '#work' },
+  { label: 'Projects', href: '#projects' },
+  { label: 'Contact', href: '#contact' },
+];
+const year = new Date().getFullYear();
+---
+
+<Base>
+  <header class="top">
+    <div class="wrap top-inner">
+      <a class="brand mono" href="#main">{site.name.toLowerCase().replace(' ', '.')}</a>
+      <nav aria-label="Primary">
+        <ul>
+          {nav.map((item) => <li><a class="mono" href={item.href}>{item.label}</a></li>)}
+        </ul>
+      </nav>
+      <ThemeToggle />
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero wrap">
+      <p class="mono eyebrow"><span class="pulse" aria-hidden="true"></span>{site.role}</p>
+      <h1>{site.name}</h1>
+      <p class="lede">{site.tagline}</p>
+      <ul class="hero-links" aria-label="Elsewhere">
+        {links.map((l) => (
+          <li>
+            <a href={l.href} rel={l.href.startsWith('http') ? 'me noopener' : undefined}>
+              {l.label}<span aria-hidden="true"> ↗</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <p class="mono loc">{site.location}</p>
+    </section>
+
+    <section id="about" class="block wrap" aria-labelledby="about-h">
+      <h2 id="about-h" class="mono label">01 / About</h2>
+      <div class="body prose">
+        {about.map((p) => <p>{p}</p>)}
+      </div>
+    </section>
+
+    <section id="work" class="block wrap" aria-labelledby="work-h">
+      <h2 id="work-h" class="mono label">02 / Work</h2>
+      <ol class="body rows">
+        {experience.map((e) => (
+          <li class="row">
+            <div class="row-head">
+              <h3>{e.role}</h3>
+              {e.period && <span class="mono muted">{e.period}</span>}
+            </div>
+            <p class="muted org">{e.org}</p>
+            <p>{e.summary}</p>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section id="projects" class="block wrap" aria-labelledby="projects-h">
+      <h2 id="projects-h" class="mono label">03 / Projects</h2>
+      <ol class="body rows">
+        {projects.map((p, i) => (
+          <li class="row project">
+            <span class="mono idx" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+            <div>
+              <div class="row-head">
+                <h3>
+                  {p.href ? <a href={p.href}>{p.title}<span aria-hidden="true"> ↗</span></a> : p.title}
+                </h3>
+                {p.status && <span class={`mono status ${p.status === 'Shipped' ? 'shipped' : ''}`}>{p.status}</span>}
+              </div>
+              <p>{p.description}</p>
+              <ul class="tags" aria-label="Tags">
+                {p.tags.map((t) => <li class="mono">{t}</li>)}
+              </ul>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section id="skills" class="block wrap" aria-labelledby="skills-h">
+      <h2 id="skills-h" class="mono label">04 / Toolkit</h2>
+      <div class="body skills">
+        {skills.map((s) => (
+          <div>
+            <h3 class="mono muted">{s.group}</h3>
+            <ul>
+              {s.items.map((item) => <li>{item}</li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section id="contact" class="block wrap" aria-labelledby="contact-h">
+      <h2 id="contact-h" class="mono label">05 / Contact</h2>
+      <div class="body">
+        <p class="cta">
+          Open to interesting problems in AI and data. The fastest way to reach me is{' '}
+          <a href={`mailto:${site.email}`}>{site.email}</a>.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap foot mono">
+    <span>© {year} {site.name}</span>
+    <span>Stockholm → Boston</span>
+  </footer>
+</Base>
+
+<style>
+  .top {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background: color-mix(in srgb, var(--bg) 85%, transparent);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .top-inner {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    height: 3.5rem;
+  }
+
+  .brand {
+    font-weight: 600;
+    text-decoration: none;
+    margin-right: auto;
+  }
+
+  nav ul {
+    display: flex;
+    gap: 1.25rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav a {
+    color: var(--muted);
+    text-decoration: none;
+  }
+
+  nav a:hover {
+    color: var(--text);
+  }
+
+  @media (max-width: 40rem) {
+    nav {
+      display: none;
+    }
+  }
+
+  /* Hero */
+  .hero {
+    padding-block: clamp(4rem, 14vh, 9rem) clamp(3rem, 10vh, 6rem);
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .pulse {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 60%, transparent);
+    animation: pulse 2.4s infinite;
+  }
+
+  @keyframes pulse {
+    70% {
+      box-shadow: 0 0 0 0.5rem transparent;
+    }
+    100% {
+      box-shadow: 0 0 0 0 transparent;
+    }
+  }
+
+  h1 {
+    font-size: clamp(2.75rem, 9vw, 6.25rem);
+    line-height: 0.95;
+    letter-spacing: -0.045em;
+    font-weight: 650;
+  }
+
+  .lede {
+    max-width: 36rem;
+    margin-top: 1.75rem;
+    font-size: clamp(1.125rem, 2.2vw, 1.375rem);
+    line-height: 1.5;
+    color: var(--muted);
+  }
+
+  .hero-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    list-style: none;
+    padding: 0;
+    margin: 2.25rem 0 0;
+  }
+
+  .hero-links a {
+    display: inline-block;
+    padding: 0.5rem 0.95rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 0.9375rem;
+    transition: border-color 0.15s, background 0.15s, color 0.15s;
+  }
+
+  .hero-links a:hover {
+    background: var(--accent-bg);
+    border-color: var(--accent-bg);
+    color: #0f1115;
+  }
+
+  .loc {
+    margin-top: 1.5rem;
+    color: var(--muted);
+  }
+
+  /* Sections */
+  .block {
+    display: grid;
+    grid-template-columns: 11rem minmax(0, 1fr);
+    gap: 2rem;
+    padding-block: 3.5rem;
+    border-top: 1px solid var(--line);
+  }
+
+  @media (max-width: 48rem) {
+    .block {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 1.25rem;
+      padding-block: 2.75rem;
+    }
+  }
+
+  .label {
+    color: var(--muted);
+    font-weight: 500;
+    padding-top: 0.25rem;
+  }
+
+  .body {
+    max-width: 42rem;
+  }
+
+  .prose p + p {
+    margin-top: 1.1rem;
+  }
+
+  .muted {
+    color: var(--muted);
+  }
+
+  .rows {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .row + .row {
+    margin-top: 2.25rem;
+  }
+
+  .row-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.25rem 1rem;
+  }
+
+  h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .org {
+    margin-bottom: 0.35rem;
+    font-size: 0.9375rem;
+  }
+
+  .project {
+    display: grid;
+    grid-template-columns: 2.25rem minmax(0, 1fr);
+  }
+
+  .project p {
+    margin-top: 0.4rem;
+  }
+
+  .idx {
+    color: var(--muted);
+    padding-top: 0.2rem;
+  }
+
+  .status {
+    color: var(--muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .status::before {
+    content: '';
+    width: 0.4rem;
+    height: 0.4rem;
+    border-radius: 50%;
+    border: 1px solid currentColor;
+  }
+
+  .status.shipped::before {
+    background: var(--accent-bg);
+    border-color: var(--accent-bg);
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    list-style: none;
+    padding: 0;
+    margin: 0.85rem 0 0;
+  }
+
+  .tags li {
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    background: var(--surface);
+    color: var(--muted);
+    font-size: 0.75rem;
+  }
+
+  .skills {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+    gap: 2rem;
+    max-width: none;
+  }
+
+  .skills h3 {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+  }
+
+  .skills ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .skills li + li {
+    margin-top: 0.3rem;
+  }
+
+  .cta {
+    font-size: clamp(1.25rem, 2.6vw, 1.625rem);
+    line-height: 1.4;
+    letter-spacing: -0.015em;
+  }
+
+  .cta a {
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: 2px;
+    overflow-wrap: anywhere;
+  }
+
+  .foot {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding-block: 2rem 3rem;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+  }
+</style>

@@ -1,0 +1,49 @@
+<button class="toggle mono" type="button" aria-label="Toggle color theme" data-theme-toggle>
+  <span class="dot" aria-hidden="true"></span>
+  <span class="label">theme</span>
+</button>
+
+<script>
+  const root = document.documentElement;
+  const button = document.querySelector<HTMLButtonElement>('[data-theme-toggle]');
+
+  const current = () =>
+    root.dataset.theme ??
+    (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+  button?.addEventListener('click', () => {
+    const next = current() === 'dark' ? 'light' : 'dark';
+    root.dataset.theme = next;
+    try {
+      localStorage.setItem('theme', next);
+    } catch {}
+  });
+</script>
+
+<style>
+  .toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.375rem 0.625rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    transition: color 0.15s, border-color 0.15s;
+  }
+
+  .toggle:hover {
+    color: var(--text);
+    border-color: var(--muted);
+  }
+
+  .dot {
+    width: 0.625rem;
+    height: 0.625rem;
+    border-radius: 50%;
+    background: linear-gradient(90deg, var(--text) 50%, transparent 50%);
+    border: 1px solid var(--text);
+  }
+</style>
